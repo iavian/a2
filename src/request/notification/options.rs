@@ -60,6 +60,8 @@ pub struct NotificationOptions<'a> {
     /// user as a single notification. The value of this key must not exceed 64
     /// bytes.
     pub apns_collapse_id: Option<CollapseId<'a>>,
+
+    pub apns_push_type: Option<&'a str>,
 }
 
 impl<'a> Default for NotificationOptions<'a> {
@@ -70,6 +72,7 @@ impl<'a> Default for NotificationOptions<'a> {
             apns_priority: None,
             apns_topic: None,
             apns_collapse_id: None,
+            apns_push_type:Some("alert")
         }
     }
 }

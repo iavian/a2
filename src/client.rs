@@ -153,6 +153,9 @@ impl Client {
         if let Some(ref apns_topic) = payload.options.apns_topic {
             builder = builder.header("apns-topic", apns_topic.as_bytes());
         }
+        if let Some(ref apns_push_type) = payload.options.apns_push_type {
+            builder = builder.header("apns-push-type", apns_push_type.as_bytes());
+        }
         if let Some(ref signer) = self.signer {
             let auth = signer
                 .with_signature(|signature| format!("Bearer {}", signature))
